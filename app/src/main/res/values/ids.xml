@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="film_poster"/>
+    <item type="id" name="description_cardView"/>
+    <item type="id" name="guideline_left"/>
+    <item type="id" name="guideline_right"/>
+    <item type="id" name="guideline_top"/>
+    <item type="id" name="genre"/>
+    <item type="id" name="date"/>
+    <item type="id" name="age_limit"/>
+    <item type="id" name="name"/>
+    <item type="id" name="star1"/>
+    <item type="id" name="star2"/>
+    <item type="id" name="star3"/>
+    <item type="id" name="star4"/>
+    <item type="id" name="star5"/>
+    <item type="id" name="film_description"/>
+    <item type="id" name="title_for_actors"/>
+    <item type="id" name="jason_statham_photo"/>
+    <item type="id" name="jason_statham_name"/>
+    <item type="id" name="holt_mccallany_photo"/>
+    <item type="id" name="holt_mccallany_name"/>
+    <item type="id" name="josh_harnett_photo"/>
+    <item type="id" name="josh_harnett_name"/>
+</resources>
