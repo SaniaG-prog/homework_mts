@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Homework1</string>
+    <string name="genre">боевики</string>
+    <string name="date">22.04.2021</string>
+    <string name="name">Гнев человеческий</string>
+    <string name="age_limit">18+</string>
+    <string name="film_description">Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя свои мотивы, он внедряется в инкассаторскую компанию, чтобы выйти на соучастников серии многомиллионных ограблений, потрясших Лос-Анджелес. В этой запутанной игре у каждого своя роль, но под подозрением оказываются все. Виновных же обязательно постигнет гнев человеческий.</string>
+    <string name="title_for_actors">Актеры</string>
+    <string name="jason_statham_name">Джейсон Стэйтем</string>
+    <string name="holt_mccallany_name">Холт Маккэллани</string>
+    <string name="josh_harnett_name">Джош Харнетт</string>
+    <string name="home_icon_title"></string>
+    <string name="user_icon_title"></string>
 </resources>
