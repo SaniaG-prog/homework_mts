@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Homework1</string>
+    <string name="app_name"></string>
     <string name="genre">боевики</string>
     <string name="date">22.04.2021</string>
     <string name="name">Гнев человеческий</string>
@@ -11,4 +11,10 @@
     <string name="josh_harnett_name">Джош Харнетт</string>
     <string name="home_icon_title"></string>
     <string name="user_icon_title"></string>
+    <string name="popular_now">Популярное сейчас</string>
+    <string name="genre1">боевики</string>
+    <string name="genre2">драмы</string>
+    <string name="genre3">комедии</string>
+    <string name="genre4">артхаус</string>
+    <string name="genre5">мелодрамы</string>
 </resources>
