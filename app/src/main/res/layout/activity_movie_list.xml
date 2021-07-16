@@ -27,6 +27,7 @@
         android:layout_marginTop="@dimen/margin_top_for_search_loupe"
         android:layout_marginEnd="@dimen/margin_end_for_search_loupe"
         android:src="@drawable/ic_search_loupe"
+        android:contentDescription="@string/loupe"
         app:layout_constraintEnd_toStartOf="@+id/movie_list_guideline_right"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,69 +44,25 @@
         app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/movie_list_search_loupe" />
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_list_recycler_view_for_genres"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_start_for_scroll_view_with_genres"
         android:layout_marginTop="@dimen/margin_top_for_scroll_view_with_genres"
         app:layout_constraintEnd_toStartOf="@+id/movie_list_guideline_right"
         app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/movie_list_text_view_for_popular_now">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/movie_list_genre1"
-                style="@style/StyleForTextViewForGenre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/genre1" />
-
-            <TextView
-                android:id="@+id/movie_list_genre2"
-                style="@style/StyleForTextViewForGenre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/genre2" />
-
-            <TextView
-                android:id="@+id/movie_list_genre3"
-                style="@style/StyleForTextViewForGenre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/genre3" />
-
-            <TextView
-                android:id="@+id/movie_list_genre4"
-                style="@style/StyleForTextViewForGenre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/genre4" />
-
-            <TextView
-                android:id="@+id/movie_list_genre5"
-                style="@style/StyleForTextViewForGenre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/genre5" />
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/movie_list_text_view_for_popular_now" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movie_list_recycler_view"
+        android:id="@+id/movie_list_recycler_view_for_movies"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_top_for_recycler_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/movie_list_guideline_right"
         app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_list_recycler_view_for_genres" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/movie_list_bottom_navigation_view"
@@ -118,5 +75,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu" />
+
+    <Button
+        android:id="@+id/movie_list_button_for_list_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_for_list_update"
+        app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

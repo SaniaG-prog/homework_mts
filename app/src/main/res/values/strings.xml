@@ -11,10 +11,12 @@
     <string name="josh_harnett_name">Джош Харнетт</string>
     <string name="home_icon_title"></string>
     <string name="user_icon_title"></string>
+    <string name="star1">star1</string>
+    <string name="star2">star2</string>
+    <string name="star3">star3</string>
+    <string name="star4">star4</string>
+    <string name="star5">star5</string>
     <string name="popular_now">Популярное сейчас</string>
-    <string name="genre1">боевики</string>
-    <string name="genre2">драмы</string>
-    <string name="genre3">комедии</string>
-    <string name="genre4">артхаус</string>
-    <string name="genre5">мелодрамы</string>
+    <string name="loupe">Поиск по фильмам</string>
+    <string name="button_for_list_update">Обновить данные</string>
 </resources>

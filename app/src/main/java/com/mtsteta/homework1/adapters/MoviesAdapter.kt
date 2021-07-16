@@ -1,4 +1,4 @@
-package com.mtsteta.homework1
+package com.mtsteta.homework1.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,13 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.mtsteta.homework1.listeners.MovieItemClickListener
+import com.mtsteta.homework1.R
+import com.mtsteta.homework1.dto.MovieDto
 
-class MoviesAdapter(private val listener:MovieItemClickListener, private val movies:List<MovieDto>):
+class MoviesAdapter(private val listener: MovieItemClickListener):
     RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+    private var movies: List<MovieDto> = emptyList()
 
     class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val poster: ImageView = itemView.findViewById(R.id.item_movie_poster)
@@ -38,7 +42,15 @@ class MoviesAdapter(private val listener:MovieItemClickListener, private val mov
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(movies.get(position))
         holder.itemView.setOnClickListener {
-            listener.onClick(movies.get(position).title)
+            listener.onMovieClick(movies.get(position).title)
         }
+    }
+
+    fun setData(newMovies: List<MovieDto>) {
+        movies = newMovies
+    }
+
+    fun getData(): List<MovieDto> {
+        return movies
     }
 }

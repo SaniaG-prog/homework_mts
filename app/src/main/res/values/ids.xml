@@ -33,8 +33,9 @@
     <item type="id" name="movie_list_genre3"/>
     <item type="id" name="movie_list_genre4"/>
     <item type="id" name="movie_list_genre5"/>
-    <item type="id" name="movie_list_recycler_view"/>
+    <item type="id" name="movie_list_recycler_view_for_movies"/>
     <item type="id" name="movie_list_bottom_navigation_view"/>
+    <item type="id" name="movie_list_button_for_list_update"/>
 
     <item type="id" name="item_movie_root"/>
     <item type="id" name="item_movie_guideline_left"/>
@@ -44,4 +45,7 @@
     <item type="id" name="item_movie_description"/>
     <item type="id" name="item_movie_rating_bar"/>
     <item type="id" name="item_movie_age"/>
+
+    <item type="id" name="item_genre_root"/>
+    <item type="id" name="item_genre_name"/>
 </resources>

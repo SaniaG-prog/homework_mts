@@ -1,4 +1,7 @@
-package com.mtsteta.homework1
+package com.mtsteta.homework1.dataSourceImpls
+
+import com.mtsteta.homework1.dataSources.MoviesDataSource
+import com.mtsteta.homework1.dto.MovieDto
 
 class MoviesDataSourceImpl: MoviesDataSource {
     override fun getMovies() = listOf(
