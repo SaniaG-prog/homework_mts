@@ -22,27 +22,27 @@ import com.mtsteta.homework1.models.MoviesModel
 
 
 class MainActivity : AppCompatActivity(), MovieItemClickListener, GenreItemClickListener {
-    val adapterForMovies = MoviesAdapter(this)
+    private lateinit var updateButton: Button
+    private lateinit var recyclerViewForMovies: RecyclerView
+    private lateinit var recyclerViewForGenres: RecyclerView
+    private val moviesModel = MoviesModel(MoviesDataSourceImpl())
+    private val genresModel = GenresModel(GenresDataSourceImpl())
+    private val adapterForMovies = MoviesAdapter(this)
+    private val adapterForGenres = GenresAdapter(this, genresModel.getGenres())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
 
-        val updateButton: Button = findViewById(R.id.movie_list_button_for_list_update)
+        updateButton = findViewById(R.id.movie_list_button_for_list_update)
         updateButton.setOnClickListener {
             onUpdateButtonClick()
         }
 
-        val recyclerViewForMovies: RecyclerView = findViewById(R.id.movie_list_recycler_view_for_movies)
-        val moviesModel = MoviesModel(MoviesDataSourceImpl())
-        val movies: List<MovieDto> = moviesModel.getMovies()
-        adapterForMovies.setData(movies)
+        recyclerViewForMovies = findViewById(R.id.movie_list_recycler_view_for_movies)
+        recyclerViewForGenres = findViewById(R.id.movie_list_recycler_view_for_genres)
 
-        val recyclerViewForGenres: RecyclerView = findViewById(R.id.movie_list_recycler_view_for_genres)
-        val genresModel = GenresModel(GenresDataSourceImpl())
-        val genres: List<GenreDto> = genresModel.getGenres()
-        val adapterForGenres = GenresAdapter(this, genres)
-
+        adapterForMovies.setData(moviesModel.getMovies())
         recyclerViewForMovies.adapter = adapterForMovies
         recyclerViewForMovies.layoutManager = GridLayoutManager(this, 2)
 
