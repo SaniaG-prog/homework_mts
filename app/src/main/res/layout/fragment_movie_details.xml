@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/movie_details_film_poster"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_for_movie_details_poster"
+        android:contentDescription="@string/empty_string"
         android:scaleType="centerCrop"
         android:src="@drawable/wrath_of_man_poster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/CustomCardCorners"
         android:id="@+id/movie_details_description_cardView"
+        style="@style/CustomCardCorners"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_top_for_description_card_view"
+        android:layout_marginBottom="@dimen/height_for_bottom_navigation_view"
         app:cardPreventCornerOverlap="true"
-        app:layout_constraintBottom_toTopOf="@+id/movie_details_bottom_navigation_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -98,7 +98,7 @@
                     android:paddingTop="@dimen/padding_top_for_age_limit"
                     android:paddingEnd="@dimen/padding_start_for_age_limit"
                     android:paddingBottom="@dimen/padding_top_for_age_limit"
-                    android:text="@string/age_limit"
+                    android:text="@string/empty_string"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_for_age_limit"
                     android:typeface="normal"
@@ -117,72 +117,28 @@
                     app:layout_constraintStart_toStartOf="@+id/movie_details_guideline_left"
                     app:layout_constraintTop_toBottomOf="@+id/movie_details_genre" />
 
-                <ImageView
-                    android:id="@+id/movie_details_star1"
+                <RatingBar
+                    android:id="@+id/movie_details_rating_bar"
+                    style="@style/CustomRatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top_for_stars_from_name"
-                    android:contentDescription="@string/star1"
+                    android:isIndicator="true"
                     app:layout_constraintStart_toStartOf="@+id/movie_details_guideline_left"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_name"
-                    app:srcCompat="@drawable/fill_star" />
-
-                <ImageView
-                    android:id="@+id/movie_details_star2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/space_between_stars"
-                    android:layout_marginTop="@dimen/margin_top_for_stars_from_name"
-                    android:contentDescription="@string/star2"
-                    app:layout_constraintStart_toEndOf="@+id/movie_details_star1"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_name"
-                    app:srcCompat="@drawable/fill_star" />
-
-                <ImageView
-                    android:id="@+id/movie_details_star3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/space_between_stars"
-                    android:layout_marginTop="@dimen/margin_top_for_stars_from_name"
-                    android:contentDescription="@string/star3"
-                    app:layout_constraintStart_toEndOf="@+id/movie_details_star2"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_name"
-                    app:srcCompat="@drawable/fill_star" />
-
-                <ImageView
-                    android:id="@+id/movie_details_star4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/space_between_stars"
-                    android:layout_marginTop="@dimen/margin_top_for_stars_from_name"
-                    android:contentDescription="@string/star4"
-                    app:layout_constraintStart_toEndOf="@+id/movie_details_star3"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_name"
-                    app:srcCompat="@drawable/fill_star" />
-
-                <ImageView
-                    android:id="@+id/movie_details_star5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/space_between_stars"
-                    android:layout_marginTop="@dimen/margin_top_for_stars_from_name"
-                    android:contentDescription="@string/star5"
-                    app:layout_constraintStart_toEndOf="@+id/movie_details_star4"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_name"
-                    app:srcCompat="@drawable/empty_star" />
+                    app:layout_constraintTop_toBottomOf="@+id/movie_details_name" />
 
                 <TextView
                     android:id="@+id/movie_details_film_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top_for_film_description"
-                    android:text="@string/film_description"
+                    android:text="@string/empty_string"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_for_film_description"
                     android:typeface="normal"
                     app:layout_constraintEnd_toStartOf="@+id/movie_details_guideline_right"
                     app:layout_constraintStart_toStartOf="@+id/movie_details_guideline_left"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_star1" />
+                    app:layout_constraintTop_toBottomOf="@+id/movie_details_rating_bar" />
 
                 <TextView
                     android:id="@+id/movie_details_title_for_actors"
@@ -284,18 +240,5 @@
         </ScrollView>
 
     </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/movie_details_bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_for_bottom_navigation_view"
-        android:layout_alignParentBottom="true"
-        android:paddingTop="@dimen/padding_top_for_bottom_navigation_view"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
