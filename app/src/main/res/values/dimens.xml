@@ -8,26 +8,72 @@
     <dimen name="margin_top_for_title_for_actors">36dp</dimen>
     <dimen name="margin_top_for_horizontal_scroll_view_for_actors">16dp</dimen>
     <dimen name="margin_top_for_actor_name">12dp</dimen>
+    <dimen name="margin_top_for_search_loupe">32dp</dimen>
+    <dimen name="margin_top_for_popular_now">22dp</dimen>
+    <dimen name="margin_top_for_recycler_view_with_genres">12dp</dimen>
+    <dimen name="margin_top_for_recycler_view_with_movies">16dp</dimen>
+    <dimen name="margin_top_for_item_movie_name">8dp</dimen>
+    <dimen name="margin_top_for_item_movie_description">10dp</dimen>
+    <dimen name="margin_top_for_item_movie_rating_bar">110dp</dimen>
+    <dimen name="margin_top_for_item_movie_age">110dp</dimen>
+    <dimen name="margin_top_for_user_info_card_view">48dp</dimen>
+    <dimen name="margin_top_for_user_info_name">64dp</dimen>
+    <dimen name="margin_top_for_user_info_email">2dp</dimen>
+    <dimen name="margin_top_for_user_info_title_interests">56dp</dimen>
+    <dimen name="margin_top_for_user_info_genres">14dp</dimen>
+    <dimen name="margin_top_for_user_info_title_personal_data">40dp</dimen>
+    <dimen name="margin_top_for_user_info_title_settings">40dp</dimen>
+    <dimen name="margin_top_for_user_info_title_annex">40dp</dimen>
+    <dimen name="margin_top_for_user_info_settings_item">20dp</dimen>
+    <dimen name="margin_top_for_user_info_arrow_to_right">30dp</dimen>
+    <dimen name="margin_top_for_user_info_button">40dp</dimen>
+
+    <dimen name="margin_end_for_search_loupe">10dp</dimen>
+    <dimen name="margin_end_for_genre_in_recycler_view">6dp</dimen>
+    <dimen name="margin_end_for_user_info_card_view">6dp</dimen>
+
+    <dimen name="margin_start_for_popular_now">10dp</dimen>
+    <dimen name="margin_start_for_recycler_view_with_genres">10dp</dimen>
+
+    <dimen name="margin_bottom_for_rating_bar_and_age_in_item_movie">50dp</dimen>
+    <dimen name="margin_bottom_for_user_info_button">96dp</dimen>
 
     <dimen name="corner_radius_for_description_card_view">30dp</dimen>
     <dimen name="corner_radius_for_text_genre">10dp</dimen>
+    <dimen name="corner_radius_for_item_movie_poster">10dp</dimen>
+    <dimen name="corner_radius_for_user_info_card_view">40dp</dimen>
+    <dimen name="corner_radius_for_user_info_button">10dp</dimen>
 
     <dimen name="guideline_right_and_left_for_description_card_view">20dp</dimen>
+    <dimen name="guideline_right_and_left_for_user_info_layout">20dp</dimen>
     <dimen name="guideline_top_for_description_card_view">32dp</dimen>
+    <dimen name="guideline_for_movie_list">10dp</dimen>
+    <dimen name="guideline_for_item_movie">10dp</dimen>
 
     <dimen name="space_between_genre_and_date">14dp</dimen>
     <dimen name="space_between_genre_and_name">14dp</dimen>
     <dimen name="space_between_stars">2dp</dimen>
     <dimen name="horizontal_space_between_actors">10dp</dimen>
 
-    <dimen name="padding_top_and_bottom_for_genre">4dp</dimen>
     <dimen name="padding_start_and_end_for_genre">9dp</dimen>
-    <dimen name="padding_top_for_age_limit">12dp</dimen>
     <dimen name="padding_start_for_age_limit">10dp</dimen>
+    <dimen name="padding_start_and_end_for_genre_in_recycler_view">12dp</dimen>
+
+    <dimen name="padding_top_and_bottom_for_genre">4dp</dimen>
+    <dimen name="padding_top_for_age_limit">12dp</dimen>
     <dimen name="padding_top_for_bottom_navigation_view">14dp</dimen>
+    <dimen name="padding_top_for_genre_in_recycler_view">6dp</dimen>
+
+    <dimen name="padding_bottom_for_genre_in_recycler_view">4dp</dimen>
+
+    <dimen name="padding_for_item_movie_age">6dp</dimen>
 
     <dimen name="height_for_bottom_navigation_view">48dp</dimen>
+    <dimen name="height_for_movie_details_poster">290dp</dimen>
     <dimen name="width_of_stroke_for_frames">1dp</dimen>
+    <dimen name="min_height_and_width_for_stars_in_rating_bar">16dp</dimen>
+    <dimen name="max_height_and_width_for_stars_in_rating_bar">64dp</dimen>
+    <dimen name="height_and_width_for_user_info_card_view">72dp</dimen>
 
     <dimen name="text_size_for_genre">10sp</dimen>
     <dimen name="text_size_for_date">12sp</dimen>
@@ -35,5 +81,14 @@
     <dimen name="text_size_for_age_limit">14sp</dimen>
     <dimen name="text_size_for_film_description">14sp</dimen>
     <dimen name="text_size_for_title_for_actors">16sp</dimen>
+    <dimen name="text_size_for_title_for_popular_now">16sp</dimen>
     <dimen name="text_size_for_actor_name">12sp</dimen>
+    <dimen name="text_size_for_item_movie_name">14sp</dimen>
+    <dimen name="text_size_for_item_movie_description">12sp</dimen>
+    <dimen name="text_size_for_item_movie_age">6sp</dimen>
+    <dimen name="text_size_for_user_info_name">20sp</dimen>
+    <dimen name="text_size_for_user_info_email">14sp</dimen>
+    <dimen name="text_size_for_user_info_titles">16sp</dimen>
+    <dimen name="text_size_for_user_info_grey_hints">12sp</dimen>
+    <dimen name="text_size_for_user_info_settings_item">14sp</dimen>
 </resources>

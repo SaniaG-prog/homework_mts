@@ -9,4 +9,24 @@
         <item name="cornerSizeTopLeft">30dp</item>
         <item name="cornerSizeTopRight">30dp</item>
     </style>
+
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_rating_bar</item>
+        <item name="android:minHeight">@dimen/min_height_and_width_for_stars_in_rating_bar</item>
+        <item name="android:maxHeight">@dimen/max_height_and_width_for_stars_in_rating_bar</item>
+        <item name="android:minWidth">@dimen/min_height_and_width_for_stars_in_rating_bar</item>
+        <item name="android:maxWidth">@dimen/max_height_and_width_for_stars_in_rating_bar</item>
+    </style>
+
+    <style name="StyleForTextViewForGenre" parent="@style/TextAppearance.AppCompat">
+        <item name="android:background">@drawable/frame_for_text_genre</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_for_genre</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:layout_marginEnd">@dimen/margin_end_for_genre_in_recycler_view</item>
+        <item name="android:paddingTop">@dimen/padding_top_for_genre_in_recycler_view</item>
+        <item name="android:paddingBottom">@dimen/padding_bottom_for_genre_in_recycler_view</item>
+        <item name="android:paddingStart">@dimen/padding_start_and_end_for_genre_in_recycler_view</item>
+        <item name="android:paddingEnd">@dimen/padding_start_and_end_for_genre_in_recycler_view</item>
+    </style>
 </resources>

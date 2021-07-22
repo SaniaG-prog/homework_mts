@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/movie_list_guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/guideline_for_movie_list" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/movie_list_guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/guideline_for_movie_list" />
+
+    <ImageView
+        android:id="@+id/movie_list_search_loupe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_for_search_loupe"
+        android:layout_marginEnd="@dimen/margin_end_for_search_loupe"
+        android:src="@drawable/ic_search_loupe"
+        android:contentDescription="@string/loupe"
+        app:layout_constraintEnd_toStartOf="@+id/movie_list_guideline_right"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/movie_list_text_view_for_popular_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_for_popular_now"
+        android:layout_marginTop="@dimen/margin_top_for_popular_now"
+        android:text="@string/popular_now"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_for_title_for_popular_now"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/movie_list_search_loupe" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_list_recycler_view_for_genres"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_for_recycler_view_with_genres"
+        android:layout_marginTop="@dimen/margin_top_for_recycler_view_with_genres"
+        app:layout_constraintEnd_toStartOf="@+id/movie_list_guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/movie_list_text_view_for_popular_now" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_list_recycler_view_for_movies"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_top_for_recycler_view_with_movies"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/movie_list_guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/movie_list_recycler_view_for_genres" />
+
+    <Button
+        android:id="@+id/movie_list_button_for_list_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_for_list_update"
+        app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
