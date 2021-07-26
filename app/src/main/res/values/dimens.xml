@@ -91,4 +91,6 @@
     <dimen name="text_size_for_user_info_titles">16sp</dimen>
     <dimen name="text_size_for_user_info_grey_hints">12sp</dimen>
     <dimen name="text_size_for_user_info_settings_item">14sp</dimen>
+
+    <dimen name="bottom_height_for_selector_for_bottom_navigation_view">12dp</dimen>
 </resources>
