@@ -17,7 +17,7 @@
         android:layout_height="@dimen/height_for_bottom_navigation_view"
         android:layout_alignParentBottom="true"
         android:paddingTop="@dimen/padding_top_for_bottom_navigation_view"
-        app:itemBackground="@color/white"
+        app:itemBackground="@drawable/selector_for_bottom_navigation_view"
         app:itemIconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

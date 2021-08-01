@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item type="id" name="movie_details_film_poster"/>
-    <item type="id" name="movie_details_description_cardView"/>
+    <item type="id" name="movie_details_description_card_view"/>
     <item type="id" name="movie_details_guideline_left"/>
     <item type="id" name="movie_details_guideline_right"/>
     <item type="id" name="movie_details_guideline_top"/>
@@ -9,11 +9,7 @@
     <item type="id" name="movie_details_date"/>
     <item type="id" name="movie_details_age_limit"/>
     <item type="id" name="movie_details_name"/>
-    <item type="id" name="movie_details_star1"/>
-    <item type="id" name="movie_details_star2"/>
-    <item type="id" name="movie_details_star3"/>
-    <item type="id" name="movie_details_star4"/>
-    <item type="id" name="movie_details_star5"/>
+    <item type="id" name="movie_details_rating_bar"/>
     <item type="id" name="movie_details_film_description"/>
     <item type="id" name="movie_details_title_for_actors"/>
     <item type="id" name="movie_details_jason_statham_photo"/>
@@ -22,24 +18,19 @@
     <item type="id" name="movie_details_holt_mccallany_name"/>
     <item type="id" name="movie_details_josh_harnett_photo"/>
     <item type="id" name="movie_details_josh_harnett_name"/>
-    <item type="id" name="movie_details_bottom_navigation_view"/>
 
     <item type="id" name="movie_list_guideline_left"/>
     <item type="id" name="movie_list_guideline_right"/>
     <item type="id" name="movie_list_search_loupe"/>
     <item type="id" name="movie_list_text_view_for_popular_now"/>
-    <item type="id" name="movie_list_genre1"/>
-    <item type="id" name="movie_list_genre2"/>
-    <item type="id" name="movie_list_genre3"/>
-    <item type="id" name="movie_list_genre4"/>
-    <item type="id" name="movie_list_genre5"/>
+    <item type="id" name="movie_list_recycler_view_for_genres"/>
     <item type="id" name="movie_list_recycler_view_for_movies"/>
-    <item type="id" name="movie_list_bottom_navigation_view"/>
-    <item type="id" name="movie_list_button_for_list_update"/>
+    <item type="id" name="movie_list_button_for_test_diff_utils"/>
 
     <item type="id" name="item_movie_root"/>
     <item type="id" name="item_movie_guideline_left"/>
     <item type="id" name="item_movie_guideline_right"/>
+    <item type="id" name="item_movie_card_view"/>
     <item type="id" name="item_movie_poster"/>
     <item type="id" name="item_movie_name"/>
     <item type="id" name="item_movie_description"/>
@@ -48,4 +39,45 @@
 
     <item type="id" name="item_genre_root"/>
     <item type="id" name="item_genre_name"/>
+
+    <item type="id" name="fragment_container"/>
+    <item type="id" name="bottom_navigation_view"/>
+
+    <item type="id" name="user_info_guideline_left"/>
+    <item type="id" name="user_info_guideline_right"/>
+    <item type="id" name="user_info_card_view"/>
+    <item type="id" name="user_info_photo"/>
+    <item type="id" name="user_info_name"/>
+    <item type="id" name="user_info_email"/>
+    <item type="id" name="user_info_title_interests"/>
+    <item type="id" name="user_info_genres"/>
+    <item type="id" name="user_info_genre1"/>
+    <item type="id" name="user_info_genre2"/>
+    <item type="id" name="user_info_genre3"/>
+    <item type="id" name="user_info_title_personal_data"/>
+    <item type="id" name="user_info_title_name"/>
+    <item type="id" name="user_info_editable_name"/>
+    <item type="id" name="user_info_title_password"/>
+    <item type="id" name="user_info_editable_password"/>
+    <item type="id" name="user_info_title_email"/>
+    <item type="id" name="user_info_editable_email"/>
+    <item type="id" name="user_info_title_phone"/>
+    <item type="id" name="user_info_editable_phone"/>
+    <item type="id" name="user_info_title_settings"/>
+    <item type="id" name="user_info_title_notifications"/>
+    <item type="id" name="user_info_arrow_1"/>
+    <item type="id" name="user_info_title_privacy"/>
+    <item type="id" name="user_info_arrow_2"/>
+    <item type="id" name="user_info_title_theme"/>
+    <item type="id" name="user_info_arrow_3"/>
+    <item type="id" name="user_info_title_language"/>
+    <item type="id" name="user_info_arrow_4"/>
+    <item type="id" name="user_info_title_data_storage"/>
+    <item type="id" name="user_info_arrow_5"/>
+    <item type="id" name="user_info_title_annex"/>
+    <item type="id" name="user_info_title_ask_question"/>
+    <item type="id" name="user_info_arrow_6"/>
+    <item type="id" name="user_info_title_tell_about_problem"/>
+    <item type="id" name="user_info_arrow_7"/>
+    <item type="id" name="user_info_button_exit"/>
 </resources>

@@ -8,7 +8,7 @@
     <string name="josh_harnett_name">Джош Харнетт</string>
     <string name="popular_now">Популярное сейчас</string>
     <string name="loupe">Поиск по фильмам</string>
-    <string name="button_for_list_update">Обновить данные</string>
+    <string name="button_for_test_diff_utils">Протестировать diffUtils</string>
     <string name="user_name">Константин</string>
     <string name="user_email">konst.89@mail.com</string>
     <string name="interests">Интересы</string>

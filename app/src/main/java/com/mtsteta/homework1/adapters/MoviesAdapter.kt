@@ -48,6 +48,7 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
 
     fun setData(newMovies: List<MovieDto>) {
         movies = newMovies
+        notifyDataSetChanged()
     }
 
     fun getData(): List<MovieDto> {
