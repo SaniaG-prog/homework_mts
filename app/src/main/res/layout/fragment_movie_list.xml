@@ -67,14 +67,6 @@
         app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/movie_list_recycler_view_for_genres" />
 
-    <Button
-        android:id="@+id/movie_list_button_for_test_diff_utils"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_for_test_diff_utils"
-        app:layout_constraintStart_toStartOf="@+id/movie_list_guideline_left"
-        app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

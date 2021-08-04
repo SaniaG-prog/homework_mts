@@ -7,10 +7,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mtsteta.homework1.R
 import com.mtsteta.homework1.dto.GenreDto
+import com.mtsteta.homework1.dto.MovieDto
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 
-class GenresAdapter(private val listener: GenreItemClickListener, private val genres:List<GenreDto>):
+class GenresAdapter(private val listener: GenreItemClickListener):
         RecyclerView.Adapter<GenresAdapter.GenreViewHolder>() {
+
+    private var genres:List<GenreDto> = emptyList()
 
     class GenreViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.item_genre_name)
@@ -33,4 +36,13 @@ class GenresAdapter(private val listener: GenreItemClickListener, private val ge
     }
 
     override fun getItemCount(): Int = genres.size
+
+    fun setData(newGenres: List<GenreDto>) {
+        genres = newGenres
+        notifyDataSetChanged()
+    }
+
+    fun getData(): List<GenreDto> {
+        return genres
+    }
 }
