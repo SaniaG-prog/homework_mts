@@ -1,15 +1,18 @@
 package com.mtsteta.homework1.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mtsteta.homework1.listeners.MovieItemClickListener
 import com.mtsteta.homework1.R
+import com.mtsteta.homework1.diffUtils.MovieDiffUtilCallback
 import com.mtsteta.homework1.dto.MovieDto
 
 class MoviesAdapter(private val listener: MovieItemClickListener):
@@ -47,8 +50,11 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
     }
 
     fun setData(newMovies: List<MovieDto>) {
+        val movieDiffUtilCallback = MovieDiffUtilCallback(movies, newMovies)
+        val movieDiffResult = DiffUtil.calculateDiff(movieDiffUtilCallback)
         movies = newMovies
-        notifyDataSetChanged()
+        movieDiffResult.dispatchUpdatesTo(this)
+        Log.d("MoviesAdapter", "Set data for adapter")
     }
 
     fun getData(): List<MovieDto> {

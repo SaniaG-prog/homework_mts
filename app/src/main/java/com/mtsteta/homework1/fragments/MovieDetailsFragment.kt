@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import coil.load
 import com.mtsteta.homework1.R
-import com.mtsteta.homework1.dto.MovieDto
 
 private const val MOVIE_NAME = "movieName"
 private const val MOVIE_DESCRIPTION = "movieDescription"
@@ -67,15 +66,9 @@ class MovieDetailsFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(movie: MovieDto) =
+        fun newInstance(bundle: Bundle) =
             MovieDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(MOVIE_NAME, movie.title)
-                    putString(MOVIE_DESCRIPTION, movie.description)
-                    putInt(MOVIE_STAR_NUMBER, movie.rateScore)
-                    putInt(MOVIE_AGE, movie.ageRestriction)
-                    putString(MOVIE_IMAGE_URL, movie.imageUrl)
-                }
+                arguments = bundle
             }
     }
 }
