@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mtsteta.homework1.R
 import com.mtsteta.homework1.dto.GenreDto
-import com.mtsteta.homework1.dto.MovieDto
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 
 class GenresAdapter(private val listener: GenreItemClickListener):

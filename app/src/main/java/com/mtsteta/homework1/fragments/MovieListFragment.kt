@@ -18,7 +18,7 @@ import com.mtsteta.homework1.MyViewModel
 import com.mtsteta.homework1.R
 import com.mtsteta.homework1.adapters.GenresAdapter
 import com.mtsteta.homework1.adapters.MoviesAdapter
-import com.mtsteta.homework1.dto.MovieDto
+import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 import com.mtsteta.homework1.listeners.MovieItemClickListener
 
@@ -40,6 +40,8 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        myViewModel.initDatabase(requireContext())
         myViewModel.moviesDataList.observe(this, Observer (adapterForMovies::setData))
         myViewModel.genresDataList.observe(this, Observer (adapterForGenres::setData))
         myViewModel.loadData()
@@ -77,7 +79,7 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
         Toast.makeText(requireContext(), genreName, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onMovieClick(movie: MovieDto) {
+    override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
         bundle.putString(MOVIE_NAME, movie.title)
         bundle.putString(MOVIE_DESCRIPTION, movie.description)

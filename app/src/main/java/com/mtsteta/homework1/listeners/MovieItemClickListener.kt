@@ -1,7 +1,7 @@
 package com.mtsteta.homework1.listeners
 
-import com.mtsteta.homework1.dto.MovieDto
+import com.mtsteta.homework1.database.entities.Movie
 
 interface MovieItemClickListener {
-    fun onMovieClick(movie: MovieDto)
+    fun onMovieClick(movie: Movie)
 }

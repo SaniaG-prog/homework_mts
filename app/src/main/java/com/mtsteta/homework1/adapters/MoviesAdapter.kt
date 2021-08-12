@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mtsteta.homework1.listeners.MovieItemClickListener
 import com.mtsteta.homework1.R
+import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.diffUtils.MovieDiffUtilCallback
-import com.mtsteta.homework1.dto.MovieDto
 
 class MoviesAdapter(private val listener: MovieItemClickListener):
     RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
-    private var movies: List<MovieDto> = emptyList()
+    private var movies: List<Movie> = emptyList()
 
     class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val poster: ImageView = itemView.findViewById(R.id.item_movie_poster)
@@ -26,7 +26,7 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         private val ratingBar: RatingBar = itemView.findViewById(R.id.item_movie_rating_bar)
         private val age: TextView = itemView.findViewById(R.id.item_movie_age)
 
-        fun bind(movie: MovieDto) {
+        fun bind(movie: Movie) {
             poster.load(movie.imageUrl)
             name.text = movie.title
             description.text = movie.description
@@ -49,7 +49,7 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         }
     }
 
-    fun setData(newMovies: List<MovieDto>) {
+    fun setData(newMovies: List<Movie>) {
         val movieDiffUtilCallback = MovieDiffUtilCallback(movies, newMovies)
         val movieDiffResult = DiffUtil.calculateDiff(movieDiffUtilCallback)
         movies = newMovies
@@ -57,7 +57,7 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         Log.d("MoviesAdapter", "Set data for adapter")
     }
 
-    fun getData(): List<MovieDto> {
+    fun getData(): List<Movie> {
         return movies
     }
 }
