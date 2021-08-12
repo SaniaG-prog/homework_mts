@@ -1,7 +1,10 @@
 package com.mtsteta.homework1
 
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,6 +32,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             false
+        }
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.id == R.id.logInFragment) {
+                bottomNavigationView.visibility = View.INVISIBLE
+            } else {
+                bottomNavigationView.visibility = View.VISIBLE
+            }
         }
     }
 }

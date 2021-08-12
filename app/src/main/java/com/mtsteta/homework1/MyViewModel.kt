@@ -1,6 +1,7 @@
 package com.mtsteta.homework1
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,10 @@ class MyViewModel: ViewModel() {
 
     private var database: AppDatabase? = null
 
+    private val prefs: SharedPreferences by lazy {
+        App.prefs!!
+    }
+
     val moviesDataList: LiveData<List<Movie>> get() = _moviesDataList
     private val _moviesDataList = MutableLiveData<List<Movie>>()
 
@@ -27,20 +32,25 @@ class MyViewModel: ViewModel() {
     fun initDatabase(context: Context) {
         AppDatabase.initDatabase(context)
         database = AppDatabase.getInstance()!!
+        if (database?.movieDao()?.getAll()?.size == 0) {
+            database?.movieDao()?.insertAll(moviesMovel.getMovies())
+        }
     }
 
-    fun postMovies() {
-        _moviesDataList.postValue(database?.movieDao()?.getAll())
+    fun addPairToPrefs(key: String, value: String) {
+        prefs.edit().putString(key, value).apply()
+    }
+
+    fun getValueByKeyInPrefs(key: String): String {
+        return prefs.getString(key, "")!!
     }
 
     fun loadMovies() {
-        database?.movieDao()?.insertAll(moviesMovel.getMovies())
-        postMovies()
+        _moviesDataList.postValue(database?.movieDao()?.getAll())
     }
 
     fun updateMovies() {
-        database?.movieDao()?.insertAll(moviesMovel.getMovies().shuffled())
-        postMovies()
+        _moviesDataList.postValue(database?.movieDao()?.getAll()?.shuffled())
     }
 
     fun loadGenres() {

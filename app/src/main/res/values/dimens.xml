@@ -27,6 +27,8 @@
     <dimen name="margin_top_for_user_info_settings_item">20dp</dimen>
     <dimen name="margin_top_for_user_info_arrow_to_right">30dp</dimen>
     <dimen name="margin_top_for_user_info_button">40dp</dimen>
+    <dimen name="margin_top_for_log_in_password">20dp</dimen>
+    <dimen name="margin_top_for_log_in_button">20dp</dimen>
 
     <dimen name="margin_end_for_search_loupe">10dp</dimen>
     <dimen name="margin_end_for_genre_in_recycler_view">6dp</dimen>
@@ -37,12 +39,14 @@
 
     <dimen name="margin_bottom_for_rating_bar_and_age_in_item_movie">50dp</dimen>
     <dimen name="margin_bottom_for_user_info_button">96dp</dimen>
+    <dimen name="margin_bottom_for_log_in_user_name">40dp</dimen>
 
     <dimen name="corner_radius_for_description_card_view">30dp</dimen>
     <dimen name="corner_radius_for_text_genre">10dp</dimen>
     <dimen name="corner_radius_for_item_movie_poster">10dp</dimen>
     <dimen name="corner_radius_for_user_info_card_view">40dp</dimen>
     <dimen name="corner_radius_for_user_info_button">10dp</dimen>
+    <dimen name="corner_radius_for_log_in_button">10dp</dimen>
 
     <dimen name="guideline_right_and_left_for_description_card_view">20dp</dimen>
     <dimen name="guideline_right_and_left_for_user_info_layout">20dp</dimen>

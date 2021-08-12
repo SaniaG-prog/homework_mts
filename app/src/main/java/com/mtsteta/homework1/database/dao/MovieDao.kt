@@ -8,7 +8,7 @@ interface MovieDao {
     @Query("SELECT * FROM movies")
     fun getAll(): List<Movie>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(movies: List<Movie>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
