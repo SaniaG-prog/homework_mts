@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/movieListFragment">
+    app:startDestination="@id/logInFragment">
 
     <fragment
         android:id="@+id/movieListFragment"
@@ -18,5 +18,17 @@
     <fragment
         android:id="@+id/userInfoFragment"
         android:name="com.mtsteta.homework1.fragments.UserInfoFragment"
-        android:label="UserInfoFragment" />
+        android:label="UserInfoFragment" >
+        <action
+            android:id="@+id/action_userInfoFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.mtsteta.homework1.fragments.LogInFragment"
+        android:label="LogInFragment" >
+        <action
+            android:id="@+id/action_logInFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
+    </fragment>
 </navigation>

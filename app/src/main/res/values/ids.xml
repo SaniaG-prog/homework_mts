@@ -80,4 +80,8 @@
     <item type="id" name="user_info_title_tell_about_problem"/>
     <item type="id" name="user_info_arrow_7"/>
     <item type="id" name="user_info_button_exit"/>
+
+    <item type="id" name="log_in_name_edit_text"/>
+    <item type="id" name="log_in_password_edit_text"/>
+    <item type="id" name="log_in_user_button"/>
 </resources>

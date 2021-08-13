@@ -31,4 +31,6 @@
     <string name="ask_question">Задать вопрос</string>
     <string name="tell_about_problem">Сообщить о проблеме</string>
     <string name="exit">Выйти</string>
+    <string name="continue_as_guest">Продолжить как гость</string>
+    <string name="log_in">Войти</string>
 </resources>
