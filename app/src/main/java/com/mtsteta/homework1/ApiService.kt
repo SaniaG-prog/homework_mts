@@ -12,9 +12,9 @@ const val LANGUAGE = "ru"
 
 interface ApiService {
     @GET("movie/popular")
-    fun getPopularMovies(
+    suspend fun getPopularMovies(
         @Query("api_key") key: String = API_KEY,
-        @Query("language") language: String = LANGUAGE): Call<PopularMoviesResponce>
+        @Query("language") language: String = LANGUAGE): PopularMoviesResponce
 
     companion object {
         fun create(): ApiService {

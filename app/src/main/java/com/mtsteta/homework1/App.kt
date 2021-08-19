@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.mtsteta.homework1.database.AppDatabase
-import com.mtsteta.homework1.models.MoviesModel
 
 
 class App: Application() {
@@ -25,9 +24,6 @@ class App: Application() {
 
         AppDatabase.initDatabase(this)
         database = AppDatabase.getInstance()
-        if (database?.movieDao()?.getAll()?.size == 0) {
-            MoviesModel().getPopularMovies()
-        }
 
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 

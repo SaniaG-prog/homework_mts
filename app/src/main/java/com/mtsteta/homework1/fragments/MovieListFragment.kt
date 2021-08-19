@@ -41,6 +41,7 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        myViewModel.initDatabase()
         myViewModel.moviesDataList.observe(this, Observer (adapterForMovies::setData))
         myViewModel.genresDataList.observe(this, Observer (adapterForGenres::setData))
         myViewModel.loadData()
