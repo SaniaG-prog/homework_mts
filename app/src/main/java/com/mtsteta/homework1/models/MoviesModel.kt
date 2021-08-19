@@ -9,22 +9,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MoviesModel () {
-    fun getPopularMovies(): List<Movie> {
-        var popularMovies: List<Movie> = emptyList()
+    fun getPopularMovies() {
         App.instance.apiService.getPopularMovies().enqueue(object: Callback<PopularMoviesResponce>
         {
             override fun onResponse(
                 call: Call<PopularMoviesResponce>,
                 response: Response<PopularMoviesResponce>
             ) {
-                Log.e("Retrofit2", response.body()?.results.toString())
-                popularMovies = response.body()?.results!!
+                Log.d("Retrofit2", response.body()?.results.toString())
+                App.database?.movieDao()?.insertAll(response.body()?.results!!)
             }
 
             override fun onFailure(call: Call<PopularMoviesResponce>, t: Throwable) {
-                Log.e("Retrofit2", "Fail")
+                Log.d("Retrofit2", "Fail")
             }
         })
-        return popularMovies
     }
 }

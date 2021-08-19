@@ -14,10 +14,7 @@ import com.mtsteta.homework1.models.GenresModel
 import com.mtsteta.homework1.models.MoviesModel
 
 class MyViewModel: ViewModel() {
-    private val moviesMovel = MoviesModel()
     private val genresModel = GenresModel(GenresDataSourceImpl())
-
-    private var database: AppDatabase? = null
 
     private val prefs: SharedPreferences by lazy {
         App.prefs!!
@@ -29,14 +26,6 @@ class MyViewModel: ViewModel() {
     val genresDataList: LiveData<List<GenreDto>> get() = _genresDataList
     private val _genresDataList = MutableLiveData<List<GenreDto>>()
 
-    fun initDatabase(context: Context) {
-        AppDatabase.initDatabase(context)
-        database = AppDatabase.getInstance()!!
-        if (database?.movieDao()?.getAll()?.size == 0) {
-            database?.movieDao()?.insertAll(moviesMovel.getPopularMovies())
-        }
-    }
-
     fun addPairToPrefs(key: String, value: String) {
         prefs.edit().putString(key, value).apply()
     }
@@ -46,12 +35,12 @@ class MyViewModel: ViewModel() {
     }
 
     fun loadMovies() {
-        _moviesDataList.postValue(moviesMovel.getPopularMovies())
-        Log.e("Loading movies", moviesMovel.getPopularMovies().toString())
+        _moviesDataList.postValue(App.database?.movieDao()?.getAll())
+        Log.d("Loading movies", App.database?.movieDao()?.getAll().toString())
     }
 
     fun updateMovies() {
-        _moviesDataList.postValue(moviesMovel.getPopularMovies().shuffled())
+        _moviesDataList.postValue(App.database?.movieDao()?.getAll()?.shuffled())
     }
 
     fun loadGenres() {

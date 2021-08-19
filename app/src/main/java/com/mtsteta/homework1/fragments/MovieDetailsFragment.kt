@@ -16,8 +16,9 @@ private const val MOVIE_DESCRIPTION = "movieDescription"
 private const val MOVIE_STAR_NUMBER = "movieStarNumber"
 private const val MOVIE_AGE = "movieAge"
 private const val MOVIE_IMAGE_URL = "movieImageUrl"
-private const val ADULT_RESTRICTION = "18+"
-private const val EMPTY_STRING = ""
+private const val ADULT_RESTRICTION_TRUE = "18+"
+private const val ADULT_RESTRICTION_FALSE = "0+"
+private const val MOVIE_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
 
 class MovieDetailsFragment : Fragment() {
     private var movieName: String? = null
@@ -39,7 +40,7 @@ class MovieDetailsFragment : Fragment() {
             movieDescription = it.getString(MOVIE_DESCRIPTION)
             movieStarNumber = it.getFloat(MOVIE_STAR_NUMBER)
             movieAge = it.getBoolean(MOVIE_AGE)
-            movieImageUrl = it.getString(MOVIE_IMAGE_URL)
+            movieImageUrl = MOVIE_IMAGE_BASE_URL + it.getString(MOVIE_IMAGE_URL)
         }
     }
 
@@ -63,10 +64,10 @@ class MovieDetailsFragment : Fragment() {
         movieNameTextView.text = movieName
         movieDescriptionTextView.text = movieDescription
         if (movieAge == true) {
-            movieAgeTextView.text = ADULT_RESTRICTION
+            movieAgeTextView.text = ADULT_RESTRICTION_TRUE
         }
         else {
-            movieAgeTextView.text = EMPTY_STRING
+            movieAgeTextView.text = ADULT_RESTRICTION_FALSE
         }
         movieRatingBar.rating = movieStarNumber!!.toFloat()
     }
