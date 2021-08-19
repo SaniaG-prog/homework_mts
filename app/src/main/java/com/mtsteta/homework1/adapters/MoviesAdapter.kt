@@ -15,6 +15,9 @@ import com.mtsteta.homework1.R
 import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.diffUtils.MovieDiffUtilCallback
 
+private const val ADULT_RESTRICTION = "18+"
+private const val EMPTY_STRING = ""
+
 class MoviesAdapter(private val listener: MovieItemClickListener):
     RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     private var movies: List<Movie> = emptyList()
@@ -27,11 +30,16 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         private val age: TextView = itemView.findViewById(R.id.item_movie_age)
 
         fun bind(movie: Movie) {
-            poster.load(movie.imageUrl)
+            poster.load(movie.posterPath)
             name.text = movie.title
-            description.text = movie.description
-            ratingBar.rating = movie.rateScore.toFloat()
-            age.text = movie.ageRestriction.toString() + "+"
+            description.text = movie.overview
+            ratingBar.rating = movie.voteAverage
+            if (movie.adult) {
+                age.text = ADULT_RESTRICTION
+            }
+            else {
+                age.text = EMPTY_STRING
+            }
         }
     }
 

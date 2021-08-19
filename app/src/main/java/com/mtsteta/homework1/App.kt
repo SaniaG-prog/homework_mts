@@ -8,6 +8,8 @@ import androidx.security.crypto.MasterKeys
 
 class App: Application() {
 
+    val apiService: ApiService by lazy { ApiService.create() }
+
     companion object {
         var prefs: SharedPreferences? = null
         lateinit var instance: App

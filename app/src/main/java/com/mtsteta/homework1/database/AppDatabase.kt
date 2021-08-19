@@ -9,7 +9,7 @@ import com.mtsteta.homework1.database.dao.MovieDao
 import com.mtsteta.homework1.database.entities.Actor
 import com.mtsteta.homework1.database.entities.Movie
 
-@Database(entities = [Movie::class, Actor::class], version = 1)
+@Database(entities = [Movie::class, Actor::class], version = 2)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
