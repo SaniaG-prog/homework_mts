@@ -4,7 +4,11 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.mtsteta.homework1.database.AppDatabase
+import java.util.concurrent.TimeUnit
 
 
 class App: Application() {
@@ -24,6 +28,10 @@ class App: Application() {
 
         AppDatabase.initDatabase(this)
         database = AppDatabase.getInstance()
+
+        val bdUpdateWorker: PeriodicWorkRequest = PeriodicWorkRequestBuilder<BdUpdateWorker>(
+            24, TimeUnit.HOURS).build()
+        WorkManager.getInstance(this).enqueue(bdUpdateWorker)
 
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
