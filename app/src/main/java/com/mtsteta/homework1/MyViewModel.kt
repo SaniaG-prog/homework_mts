@@ -1,23 +1,21 @@
 package com.mtsteta.homework1
 
-import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.mtsteta.homework1.dataSourceImpls.GenresDataSourceImpl
-import com.mtsteta.homework1.dataSourceImpls.MoviesDataSourceImpl
-import com.mtsteta.homework1.database.AppDatabase
 import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.dto.GenreDto
 import com.mtsteta.homework1.models.GenresModel
-import com.mtsteta.homework1.models.MoviesModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MyViewModel: ViewModel() {
-    private val moviesMovel = MoviesModel(MoviesDataSourceImpl())
     private val genresModel = GenresModel(GenresDataSourceImpl())
-
-    private var database: AppDatabase? = null
 
     private val prefs: SharedPreferences by lazy {
         App.prefs!!
@@ -29,14 +27,6 @@ class MyViewModel: ViewModel() {
     val genresDataList: LiveData<List<GenreDto>> get() = _genresDataList
     private val _genresDataList = MutableLiveData<List<GenreDto>>()
 
-    fun initDatabase(context: Context) {
-        AppDatabase.initDatabase(context)
-        database = AppDatabase.getInstance()!!
-        if (database?.movieDao()?.getAll()?.size == 0) {
-            database?.movieDao()?.insertAll(moviesMovel.getMovies())
-        }
-    }
-
     fun addPairToPrefs(key: String, value: String) {
         prefs.edit().putString(key, value).apply()
     }
@@ -45,12 +35,24 @@ class MyViewModel: ViewModel() {
         return prefs.getString(key, "")!!
     }
 
+    fun initDatabase() {
+        if (App.database?.movieDao()?.getAll()?.size == 0) {
+            viewModelScope.launch {
+                val popularMovies: List<Movie> = withContext(Dispatchers.IO) {
+                    App.instance.apiService.getPopularMovies().results
+                }
+                App.database?.movieDao()?.insertAll(popularMovies)
+            }
+        }
+    }
+
     fun loadMovies() {
-        _moviesDataList.postValue(database?.movieDao()?.getAll())
+        _moviesDataList.postValue(App.database?.movieDao()?.getAll())
+        Log.d("Loading movies", App.database?.movieDao()?.getAll().toString())
     }
 
     fun updateMovies() {
-        _moviesDataList.postValue(database?.movieDao()?.getAll()?.shuffled())
+        _moviesDataList.postValue(App.database?.movieDao()?.getAll()?.shuffled())
     }
 
     fun loadGenres() {

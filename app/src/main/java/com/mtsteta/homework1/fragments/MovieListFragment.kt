@@ -41,7 +41,7 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        myViewModel.initDatabase(requireContext())
+        myViewModel.initDatabase()
         myViewModel.moviesDataList.observe(this, Observer (adapterForMovies::setData))
         myViewModel.genresDataList.observe(this, Observer (adapterForGenres::setData))
         myViewModel.loadData()
@@ -82,10 +82,10 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
         bundle.putString(MOVIE_NAME, movie.title)
-        bundle.putString(MOVIE_DESCRIPTION, movie.description)
-        bundle.putInt(MOVIE_STAR_NUMBER, movie.rateScore)
-        bundle.putInt(MOVIE_AGE, movie.ageRestriction)
-        bundle.putString(MOVIE_IMAGE_URL, movie.imageUrl)
+        bundle.putString(MOVIE_DESCRIPTION, movie.overview)
+        bundle.putFloat(MOVIE_STAR_NUMBER, movie.voteAverage)
+        bundle.putBoolean(MOVIE_AGE, movie.adult)
+        bundle.putString(MOVIE_IMAGE_URL, movie.posterPath)
         navController.navigate(R.id.action_movieListFragment_to_movieDetailsFragment, bundle)
     }
 

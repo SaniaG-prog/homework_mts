@@ -15,9 +15,9 @@ class MovieDiffUtilCallback(private val oldList: List<Movie>,
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].description == newList[newItemPosition].description &&
-                oldList[oldItemPosition].ageRestriction == newList[newItemPosition].ageRestriction &&
-                oldList[oldItemPosition].rateScore == newList[newItemPosition].rateScore &&
-                oldList[oldItemPosition].imageUrl == newList[newItemPosition].imageUrl
+        return oldList[oldItemPosition].overview == newList[newItemPosition].overview &&
+                oldList[oldItemPosition].adult == newList[newItemPosition].adult &&
+                oldList[oldItemPosition].voteAverage == newList[newItemPosition].voteAverage &&
+                oldList[oldItemPosition].posterPath == newList[newItemPosition].posterPath
     }
 }

@@ -2,30 +2,71 @@ package com.mtsteta.homework1.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "movies")
 data class Movie(
-    @PrimaryKey(autoGenerate = true)
+    @SerializedName("poster_path")
+    @ColumnInfo(name = "poster_path")
+    var posterPath: String,
+
+    @SerializedName("adult")
+    @ColumnInfo(name = "adult")
+    var adult: Boolean,
+
+    @SerializedName("overview")
+    @ColumnInfo(name = "overview")
+    var overview: String,
+
+    @SerializedName("release_date")
+    @ColumnInfo(name = "release_date")
+    var releaseDate: String,
+
+    @SerializedName("genre_ids")
+    @Ignore
+    var genreIds: List<Int>,
+
+    @PrimaryKey()
     @ColumnInfo(name = "id")
-    val id: Long? = null,
+    @SerializedName("id")
+    var id: Long,
 
+    @SerializedName("original_title")
+    @Ignore
+    var originalTitle: String,
+
+    @SerializedName("original_language")
+    @Ignore
+    var originalLanguage: String,
+
+    @SerializedName("title")
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
 
-    @ColumnInfo(name = "description")
-    val description: String,
+    @SerializedName("backdrop_path")
+    @Ignore
+    var backdropPath: String,
 
-    @ColumnInfo(name = "rate_score")
-    val rateScore: Int,
+    @SerializedName("popularity")
+    @Ignore
+    var popularity: Float,
 
-    @ColumnInfo(name = "age_restriction")
-    val ageRestriction: Int,
+    @SerializedName("vote_count")
+    @Ignore
+    var voteCount: Int,
 
-    @ColumnInfo(name = "image_url")
-    val imageUrl: String
+    @SerializedName("video")
+    @Ignore
+    var video: Boolean,
+
+    @SerializedName("vote_average")
+    @ColumnInfo(name = "vote_average")
+    var voteAverage: Float
 ) {
-    constructor(title: String, description: String, rateScore: Int,
-                ageRestriction: Int, imageUrl: String) :
-            this(null, title, description, rateScore, ageRestriction, imageUrl)
+    constructor(posterPath: String, adult: Boolean, overview: String, releaseDate: String,
+                id: Long, title: String, voteAverage: Float) : this(posterPath, adult, overview,
+        releaseDate, emptyList(), id, "", "", title, "",
+        0.0f, 0, false, voteAverage)
 }
