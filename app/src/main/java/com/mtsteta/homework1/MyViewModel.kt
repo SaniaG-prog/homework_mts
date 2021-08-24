@@ -1,17 +1,16 @@
 package com.mtsteta.homework1
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mtsteta.homework1.dataSourceImpls.GenresDataSourceImpl
+import androidx.lifecycle.viewModelScope
+import com.mtsteta.homework1.database.entities.Actor
+import com.mtsteta.homework1.database.entities.Genre
 import com.mtsteta.homework1.database.entities.Movie
-import com.mtsteta.homework1.dto.GenreDto
-import com.mtsteta.homework1.models.GenresModel
+import kotlinx.coroutines.launch
 
 class MyViewModel: ViewModel() {
-    private val genresModel = GenresModel(GenresDataSourceImpl())
 
     private val prefs: SharedPreferences by lazy {
         App.prefs!!
@@ -20,8 +19,11 @@ class MyViewModel: ViewModel() {
     val moviesDataList: LiveData<List<Movie>> get() = _moviesDataList
     private val _moviesDataList = MutableLiveData<List<Movie>>()
 
-    val genresDataList: LiveData<List<GenreDto>> get() = _genresDataList
-    private val _genresDataList = MutableLiveData<List<GenreDto>>()
+    val genresDataList: LiveData<List<Genre>> get() = _genresDataList
+    private val _genresDataList = MutableLiveData<List<Genre>>()
+
+    val actorsDataList: LiveData<List<Actor>> get() = _actorsDataList
+    private val _actorsDataList = MutableLiveData<List<Actor>>()
 
     fun addPairToPrefs(key: String, value: String) {
         prefs.edit().putString(key, value).apply()
@@ -33,7 +35,6 @@ class MyViewModel: ViewModel() {
 
     fun loadMovies() {
         _moviesDataList.postValue(App.database?.movieDao()?.getAll())
-        Log.d("Loading movies", App.database?.movieDao()?.getAll().toString())
     }
 
     fun updateMovies() {
@@ -41,7 +42,17 @@ class MyViewModel: ViewModel() {
     }
 
     fun loadGenres() {
-        _genresDataList.postValue(genresModel.getGenres())
+        _genresDataList.postValue(App.database?.genreDao()?.getAll())
+    }
+
+    fun loadActors(movieId: Long) {
+        viewModelScope.launch {
+            _actorsDataList.postValue(App.instance.apiService.getActors(movieId).cast)
+        }
+    }
+
+    fun getGenreNameById(genreId: Int): String {
+        return App.database?.genreDao()?.getById(genreId)?.name ?: ""
     }
 
     fun loadData() {

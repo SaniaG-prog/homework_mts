@@ -12,12 +12,7 @@
     <item type="id" name="movie_details_rating_bar"/>
     <item type="id" name="movie_details_film_description"/>
     <item type="id" name="movie_details_title_for_actors"/>
-    <item type="id" name="movie_details_jason_statham_photo"/>
-    <item type="id" name="movie_details_jason_statham_name"/>
-    <item type="id" name="movie_details_holt_mccallany_photo"/>
-    <item type="id" name="movie_details_holt_mccallany_name"/>
-    <item type="id" name="movie_details_josh_harnett_photo"/>
-    <item type="id" name="movie_details_josh_harnett_name"/>
+    <item type="id" name="movie_details_recycler_view_for_actors"/>
 
     <item type="id" name="movie_list_guideline_left"/>
     <item type="id" name="movie_list_guideline_right"/>
@@ -39,6 +34,10 @@
 
     <item type="id" name="item_genre_root"/>
     <item type="id" name="item_genre_name"/>
+
+    <item type="id" name="item_actor_root"/>
+    <item type="id" name="item_actor_photo"/>
+    <item type="id" name="item_actor_name"/>
 
     <item type="id" name="fragment_container"/>
     <item type="id" name="bottom_navigation_view"/>

@@ -1,9 +1,12 @@
 package com.mtsteta.homework1
 
-import retrofit2.Call
+import com.mtsteta.homework1.apiResponces.ActorsResponce
+import com.mtsteta.homework1.apiResponces.GenresResponce
+import com.mtsteta.homework1.apiResponces.PopularMoviesResponce
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 const val BASE_URL_FOR_POPULAR_MOVIES = "https://api.themoviedb.org/3/"
@@ -15,6 +18,17 @@ interface ApiService {
     suspend fun getPopularMovies(
         @Query("api_key") key: String = API_KEY,
         @Query("language") language: String = LANGUAGE): PopularMoviesResponce
+
+    @GET("genre/movie/list")
+    suspend fun getGenres(
+        @Query("api-key") key: String = API_KEY,
+        @Query("language") language: String = LANGUAGE): GenresResponce
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getActors(
+        @Path("movie_id") movieId: Long,
+        @Query("api-key") key: String = API_KEY,
+        @Query("language") language: String = LANGUAGE): ActorsResponce
 
     companion object {
         fun create(): ApiService {

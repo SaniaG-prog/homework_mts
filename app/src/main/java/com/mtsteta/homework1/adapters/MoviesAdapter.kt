@@ -63,7 +63,6 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         val movieDiffResult = DiffUtil.calculateDiff(movieDiffUtilCallback)
         movies = newMovies
         movieDiffResult.dispatchUpdatesTo(this)
-        Log.d("MoviesAdapter", "Set data for adapter")
     }
 
     fun getData(): List<Movie> {

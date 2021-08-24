@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mtsteta.homework1.R
-import com.mtsteta.homework1.dto.GenreDto
+import com.mtsteta.homework1.database.entities.Genre
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 
 class GenresAdapter(private val listener: GenreItemClickListener):
         RecyclerView.Adapter<GenresAdapter.GenreViewHolder>() {
 
-    private var genres:List<GenreDto> = emptyList()
+    private var genres:List<Genre> = emptyList()
 
     class GenreViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.item_genre_name)
 
-        fun bind(genre: GenreDto) {
+        fun bind(genre: Genre) {
             name.text = genre.name
         }
     }
@@ -36,12 +36,12 @@ class GenresAdapter(private val listener: GenreItemClickListener):
 
     override fun getItemCount(): Int = genres.size
 
-    fun setData(newGenres: List<GenreDto>) {
+    fun setData(newGenres: List<Genre>) {
         genres = newGenres
         notifyDataSetChanged()
     }
 
-    fun getData(): List<GenreDto> {
+    fun getData(): List<Genre> {
         return genres
     }
 }

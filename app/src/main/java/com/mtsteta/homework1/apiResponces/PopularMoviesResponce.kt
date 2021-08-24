@@ -1,4 +1,4 @@
-package com.mtsteta.homework1
+package com.mtsteta.homework1.apiResponces
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -22,11 +22,13 @@ import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 import com.mtsteta.homework1.listeners.MovieItemClickListener
 
+private const val MOVIE_ID = "movieId"
 private const val MOVIE_NAME = "movieName"
 private const val MOVIE_DESCRIPTION = "movieDescription"
 private const val MOVIE_STAR_NUMBER = "movieStarNumber"
 private const val MOVIE_AGE = "movieAge"
 private const val MOVIE_IMAGE_URL = "movieImageUrl"
+private const val MOVIE_DATE = "movieDate"
 
 class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickListener {
     private lateinit var recyclerViewForMovies: RecyclerView
@@ -80,11 +82,13 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
+        bundle.putLong(MOVIE_ID, movie.id)
         bundle.putString(MOVIE_NAME, movie.title)
         bundle.putString(MOVIE_DESCRIPTION, movie.overview)
         bundle.putFloat(MOVIE_STAR_NUMBER, movie.voteAverage)
         bundle.putBoolean(MOVIE_AGE, movie.adult)
         bundle.putString(MOVIE_IMAGE_URL, movie.posterPath)
+        bundle.putString(MOVIE_DATE, movie.releaseDate)
         navController.navigate(R.id.action_movieListFragment_to_movieDetailsFragment, bundle)
     }
 
