@@ -17,5 +17,5 @@ data class Genre(
     val name: String,
 
     @ColumnInfo(name = "is_interesting")
-    val isInterestng: Boolean = false
+    var isInterestng: Boolean = false
 )

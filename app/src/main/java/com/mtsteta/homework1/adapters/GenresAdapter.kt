@@ -30,7 +30,7 @@ class GenresAdapter(private val listener: GenreItemClickListener):
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
         holder.bind(genres.get(position))
         holder.itemView.setOnClickListener {
-            listener.onGenreClick(genres.get(position).name)
+            listener.onGenreClick(genres.get(position))
         }
     }
 

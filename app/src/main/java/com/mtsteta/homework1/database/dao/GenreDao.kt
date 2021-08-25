@@ -8,8 +8,8 @@ interface GenreDao {
     @Query("SELECT * FROM genres")
     fun getAll(): List<Genre>
 
-    @Query("SELECT * FROM genres WHERE id = :genreId")
-    fun getById(genreId: Int): Genre
+    @Query("SELECT * FROM genres WHERE is_interesting = :isInteresting")
+    fun getByInterest(isInteresting: Boolean): List<Genre>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(genres: List<Genre>)

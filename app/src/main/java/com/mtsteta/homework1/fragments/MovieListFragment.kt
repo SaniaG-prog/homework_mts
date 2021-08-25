@@ -18,6 +18,7 @@ import com.mtsteta.homework1.MyViewModel
 import com.mtsteta.homework1.R
 import com.mtsteta.homework1.adapters.GenresAdapter
 import com.mtsteta.homework1.adapters.MoviesAdapter
+import com.mtsteta.homework1.database.entities.Genre
 import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 import com.mtsteta.homework1.listeners.MovieItemClickListener
@@ -76,8 +77,9 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
                 LinearLayoutManager.HORIZONTAL, false)
     }
 
-    override fun onGenreClick(genreName: String) {
-        Toast.makeText(requireContext(), genreName, Toast.LENGTH_SHORT).show()
+    override fun onGenreClick(genre: Genre) {
+        genre.isInterestng = true
+        myViewModel.updateGenreInDb(genre)
     }
 
     override fun onMovieClick(movie: Movie) {

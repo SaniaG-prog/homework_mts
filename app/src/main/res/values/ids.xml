@@ -50,9 +50,6 @@
     <item type="id" name="user_info_email"/>
     <item type="id" name="user_info_title_interests"/>
     <item type="id" name="user_info_genres"/>
-    <item type="id" name="user_info_genre1"/>
-    <item type="id" name="user_info_genre2"/>
-    <item type="id" name="user_info_genre3"/>
     <item type="id" name="user_info_title_personal_data"/>
     <item type="id" name="user_info_title_name"/>
     <item type="id" name="user_info_editable_name"/>

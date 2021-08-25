@@ -29,10 +29,6 @@ class App: Application() {
         AppDatabase.initDatabase(this)
         database = AppDatabase.getInstance()
 
-        val bdUpdateWorker: PeriodicWorkRequest = PeriodicWorkRequestBuilder<BdUpdateWorker>(
-            24, TimeUnit.HOURS).build()
-        WorkManager.getInstance(this).enqueue(bdUpdateWorker)
-
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
         prefs = EncryptedSharedPreferences.create(

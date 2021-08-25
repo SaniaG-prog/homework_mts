@@ -22,6 +22,9 @@ class MyViewModel: ViewModel() {
     val genresDataList: LiveData<List<Genre>> get() = _genresDataList
     private val _genresDataList = MutableLiveData<List<Genre>>()
 
+    val favouriteGenresDataList: LiveData<List<Genre>> get() = _favouriteGenresDataList
+    private val _favouriteGenresDataList = MutableLiveData<List<Genre>>()
+
     val actorsDataList: LiveData<List<Actor>> get() = _actorsDataList
     private val _actorsDataList = MutableLiveData<List<Actor>>()
 
@@ -45,14 +48,18 @@ class MyViewModel: ViewModel() {
         _genresDataList.postValue(App.database?.genreDao()?.getAll())
     }
 
+    fun loadFavouriteGenres() {
+        _favouriteGenresDataList.postValue(App.database?.genreDao()?.getByInterest(true))
+    }
+
     fun loadActors(movieId: Long) {
         viewModelScope.launch {
             _actorsDataList.postValue(App.instance.apiService.getActors(movieId).cast)
         }
     }
 
-    fun getGenreNameById(genreId: Int): String {
-        return App.database?.genreDao()?.getById(genreId)?.name ?: ""
+    fun updateGenreInDb(genre: Genre) {
+        App.database?.genreDao()?.insert(genre)
     }
 
     fun loadData() {

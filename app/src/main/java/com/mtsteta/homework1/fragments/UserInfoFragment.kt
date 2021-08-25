@@ -13,18 +13,24 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import com.mtsteta.homework1.MyViewModel
 import com.mtsteta.homework1.R
+import com.mtsteta.homework1.adapters.GenresAdapter
+import com.mtsteta.homework1.database.entities.Genre
+import com.mtsteta.homework1.listeners.GenreItemClickListener
 
 private const val USER_NAME: String = "userName"
 private const val USER_PASSWORD: String = "userPassword"
 private const val USER_EMAIL: String = "userEmail"
 private const val USER_PHONE: String = "userPhone"
 
-class UserInfoFragment : Fragment() {
+class UserInfoFragment : Fragment(), GenreItemClickListener {
 
     private lateinit var exitButton: Button
     private lateinit var userNameTextView: TextView
@@ -34,11 +40,16 @@ class UserInfoFragment : Fragment() {
     private lateinit var userEmailEditText: EditText
     private lateinit var userPhoneEditText: EditText
     private lateinit var navController: NavController
+    private lateinit var recyclerViewForGenres: RecyclerView
 
     private val myViewModel: MyViewModel by viewModels()
+    private val adapterForGenres = GenresAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        myViewModel.favouriteGenresDataList.observe(this, Observer (adapterForGenres::setData))
+        myViewModel.loadFavouriteGenres()
     }
 
     override fun onCreateView(
@@ -58,6 +69,7 @@ class UserInfoFragment : Fragment() {
         userPasswordEditText = view.findViewById(R.id.user_info_editable_password)
         userEmailEditText = view.findViewById(R.id.user_info_editable_email)
         userPhoneEditText = view.findViewById(R.id.user_info_editable_phone)
+        recyclerViewForGenres = view.findViewById(R.id.user_info_genres)
         navController = view.findNavController()
 
         userNameTextView.text = myViewModel.getValueByKeyInPrefs(USER_NAME)
@@ -66,6 +78,9 @@ class UserInfoFragment : Fragment() {
         userPasswordEditText.setText(myViewModel.getValueByKeyInPrefs(USER_PASSWORD))
         userEmailEditText.setText(myViewModel.getValueByKeyInPrefs(USER_EMAIL))
         userPhoneEditText.setText(myViewModel.getValueByKeyInPrefs(USER_PHONE))
+        recyclerViewForGenres.adapter = adapterForGenres
+        recyclerViewForGenres.layoutManager = LinearLayoutManager(requireContext(),
+            LinearLayoutManager.HORIZONTAL, false)
 
         userNameEditText.addTextChangedListener(object : TextWatcher {
 
@@ -114,6 +129,11 @@ class UserInfoFragment : Fragment() {
         exitButton.setOnClickListener {
             navController.navigate(R.id.action_userInfoFragment_to_logInFragment)
         }
+    }
+
+    override fun onGenreClick(genre: Genre) {
+        genre.isInterestng = false
+        myViewModel.updateGenreInDb(genre)
     }
 
     companion object {

@@ -33,7 +33,7 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         fun bind(movie: Movie) {
             poster.load(MOVIE_IMAGE_BASE_URL + movie.posterPath)
             name.text = movie.title
-            description.text = movie.overview.substring(0, 100) + "..."
+            description.text = movie.overview.substring(0, 50) + "..."
             ratingBar.rating = movie.voteAverage
             if (movie.adult) {
                 age.text = ADULT_RESTRICTION_TRUE

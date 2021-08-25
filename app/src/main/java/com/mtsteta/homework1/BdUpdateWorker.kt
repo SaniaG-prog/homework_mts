@@ -16,16 +16,10 @@ class BdUpdateWorker (appContext: Context, workerParams: WorkerParameters) :
         try {
             runBlocking {
                 coroutineScope {
-                    val popularMovies: List<Movie> = withContext(Dispatchers.IO) {
+                    val popularMovies: List<Movie> =
                         App.instance.apiService.getPopularMovies().results
-                    }
-                    val genres: List<Genre> = withContext(Dispatchers.IO) {
-                        App.instance.apiService.getGenres().genres
-                    }
-                    withContext(Dispatchers.IO) {
-                        App.database?.movieDao()?.insertAll(popularMovies)
-                        App.database?.genreDao()?.insertAll(genres)
-                    }
+                    val genres: List<Genre> = App.instance.apiService.getGenres().genres
+                    addDataToDB(popularMovies, genres)
                 }
             }
             return Result.success()
@@ -33,5 +27,10 @@ class BdUpdateWorker (appContext: Context, workerParams: WorkerParameters) :
             Log.d("Worker", "Fail")
             return Result.failure()
         }
+    }
+
+    suspend fun addDataToDB(movies: List<Movie>, genres: List<Genre>) {
+        App.database?.movieDao()?.insertAll(movies)
+        App.database?.genreDao()?.insertAll(genres)
     }
 }

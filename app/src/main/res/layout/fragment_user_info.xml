@@ -78,43 +78,13 @@
             app:layout_constraintStart_toStartOf="@id/user_info_guideline_left"
             app:layout_constraintTop_toTopOf="@id/user_info_email" />
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/user_info_genres"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_for_user_info_genres"
             app:layout_constraintStart_toStartOf="@id/user_info_guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/user_info_title_interests">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/user_info_genre1"
-                    style="@style/StyleForTextViewForGenre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/genre1" />
-
-                <TextView
-                    android:id="@+id/user_info_genre2"
-                    style="@style/StyleForTextViewForGenre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/genre2" />
-
-                <TextView
-                    android:id="@+id/user_info_genre3"
-                    style="@style/StyleForTextViewForGenre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/genre3" />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
+            app:layout_constraintTop_toBottomOf="@id/user_info_title_interests"/>
 
         <TextView
             android:id="@+id/user_info_title_personal_data"
