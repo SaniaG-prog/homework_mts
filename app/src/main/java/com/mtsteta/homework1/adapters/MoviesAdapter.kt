@@ -33,7 +33,17 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
         fun bind(movie: Movie) {
             poster.load(MOVIE_IMAGE_BASE_URL + movie.posterPath)
             name.text = movie.title
-            description.text = movie.overview.substring(0, 50) + "..."
+            if (movie.overview.isNotEmpty()) {
+                if (movie.overview.length > 30) {
+                    description.text = movie.overview.substring(0, 30) + "..."
+                }
+                else {
+                    description.text = movie.overview + "..."
+                }
+            }
+            else {
+                description.text = "Описание скоро появится)"
+            }
             ratingBar.rating = movie.voteAverage
             if (movie.adult) {
                 age.text = ADULT_RESTRICTION_TRUE
@@ -41,6 +51,12 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
             else {
                 age.text = ADULT_RESTRICTION_FALSE
             }
+
+            poster.transitionName = movie.posterPath
+            name.transitionName = movie.title
+            description.transitionName = movie.overview
+            ratingBar.transitionName = movie.voteAverage.toString()
+            age.transitionName = movie.adult.toString()
         }
     }
 
@@ -54,7 +70,7 @@ class MoviesAdapter(private val listener: MovieItemClickListener):
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(movies.get(position))
         holder.itemView.setOnClickListener {
-            listener.onMovieClick(movies.get(position))
+            listener.onMovieClick(holder.itemView, movies.get(position))
         }
     }
 

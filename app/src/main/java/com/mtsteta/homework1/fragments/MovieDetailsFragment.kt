@@ -16,6 +16,9 @@ import com.mtsteta.homework1.R
 import com.mtsteta.homework1.adapters.ActorsAdapter
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionInflater
+import java.util.concurrent.TimeUnit
 
 private const val MOVIE_ID = "movieId"
 private const val MOVIE_NAME = "movieName"
@@ -50,13 +53,14 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             movieId = it.getLong(MOVIE_ID)
             movieName = it.getString(MOVIE_NAME)
             movieDescription = it.getString(MOVIE_DESCRIPTION)
             movieStarNumber = it.getFloat(MOVIE_STAR_NUMBER)
             movieAge = it.getBoolean(MOVIE_AGE)
-            movieImageUrl = MOVIE_IMAGE_BASE_URL + it.getString(MOVIE_IMAGE_URL)
+            movieImageUrl = it.getString(MOVIE_IMAGE_URL)
             movieDate = it.getString(MOVIE_DATE)
         }
 
@@ -68,7 +72,11 @@ class MovieDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_movie_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_movie_details, container, false)
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,7 +90,7 @@ class MovieDetailsFragment : Fragment() {
         movieRatingBar = view.findViewById(R.id.movie_details_rating_bar)
         recyclerViewForActors = view.findViewById(R.id.movie_details_recycler_view_for_actors)
 
-        moviePoster.load(movieImageUrl)
+        moviePoster.load(MOVIE_IMAGE_BASE_URL + movieImageUrl)
         movieDateTextView.text = movieDate
         movieNameTextView.text = movieName
         movieDescriptionTextView.text = movieDescription
@@ -93,6 +101,12 @@ class MovieDetailsFragment : Fragment() {
             movieAgeTextView.text = ADULT_RESTRICTION_FALSE
         }
         movieRatingBar.rating = movieStarNumber!!.toFloat()
+
+        moviePoster.transitionName = movieImageUrl
+        movieNameTextView.transitionName = movieName
+        movieDescriptionTextView.transitionName = movieDescription?.substring(0, 10)
+        movieRatingBar.transitionName = movieStarNumber.toString()
+        movieAgeTextView.transitionName = movieAge.toString()
 
         recyclerViewForActors.adapter = adapterForActors
         recyclerViewForActors.layoutManager = LinearLayoutManager(requireContext(),

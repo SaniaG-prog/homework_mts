@@ -4,16 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.transition.TransitionInflater
 import com.mtsteta.homework1.MyViewModel
 import com.mtsteta.homework1.R
 import com.mtsteta.homework1.adapters.GenresAdapter
@@ -22,6 +27,7 @@ import com.mtsteta.homework1.database.entities.Genre
 import com.mtsteta.homework1.database.entities.Movie
 import com.mtsteta.homework1.listeners.GenreItemClickListener
 import com.mtsteta.homework1.listeners.MovieItemClickListener
+import jp.wasabeef.recyclerview.animators.*
 
 private const val MOVIE_ID = "movieId"
 private const val MOVIE_NAME = "movieName"
@@ -53,7 +59,10 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_movie_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
+        sharedElementReturnTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,11 +79,17 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
         recyclerViewForGenres = view.findViewById(R.id.movie_list_recycler_view_for_genres)
 
         recyclerViewForMovies.adapter = adapterForMovies
+        recyclerViewForMovies.itemAnimator = LandingAnimator()
         recyclerViewForMovies.layoutManager = GridLayoutManager(requireContext(), 2)
 
         recyclerViewForGenres.adapter = adapterForGenres
         recyclerViewForGenres.layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false)
+
+        postponeEnterTransition()
+        recyclerViewForMovies.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
     }
 
     override fun onGenreClick(genre: Genre) {
@@ -82,7 +97,7 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
         myViewModel.updateGenreInDb(genre)
     }
 
-    override fun onMovieClick(movie: Movie) {
+    override fun onMovieClick(view:View, movie: Movie) {
         val bundle = Bundle()
         bundle.putLong(MOVIE_ID, movie.id)
         bundle.putString(MOVIE_NAME, movie.title)
@@ -91,7 +106,16 @@ class MovieListFragment() : Fragment(), MovieItemClickListener, GenreItemClickLi
         bundle.putBoolean(MOVIE_AGE, movie.adult)
         bundle.putString(MOVIE_IMAGE_URL, movie.posterPath)
         bundle.putString(MOVIE_DATE, movie.releaseDate)
-        navController.navigate(R.id.action_movieListFragment_to_movieDetailsFragment, bundle)
+
+        val extras = FragmentNavigatorExtras(
+            view.findViewById<ImageView>(R.id.item_movie_poster) to movie.posterPath,
+            view.findViewById<TextView>(R.id.item_movie_name) to movie.title,
+            view.findViewById<TextView>(R.id.item_movie_description) to movie.overview,
+            view.findViewById<RatingBar>(R.id.item_movie_rating_bar) to movie.voteAverage.toString(),
+            view.findViewById<TextView>(R.id.item_movie_age) to movie.adult.toString()
+        )
+
+        navController.navigate(R.id.action_movieListFragment_to_movieDetailsFragment, bundle, null, extras)
     }
 
     companion object {
