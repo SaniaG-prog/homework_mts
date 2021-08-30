@@ -4,7 +4,11 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.mtsteta.homework1.database.AppDatabase
+import java.util.concurrent.TimeUnit
 
 
 class App: Application() {

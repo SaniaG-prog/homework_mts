@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +12,6 @@
         android:layout_height="@dimen/height_for_movie_details_poster"
         android:contentDescription="@string/empty_string"
         android:scaleType="centerCrop"
-        android:src="@drawable/wrath_of_man_poster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +82,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/space_between_genre_and_date"
                     android:layout_marginTop="@dimen/margin_top_for_date"
-                    android:text="@string/date"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_for_date"
                     android:typeface="normal"
@@ -152,88 +152,13 @@
                     app:layout_constraintStart_toStartOf="@+id/movie_details_guideline_left"
                     app:layout_constraintTop_toBottomOf="@+id/movie_details_film_description" />
 
-                <HorizontalScrollView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/movie_details_recycler_view_for_actors"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top_for_horizontal_scroll_view_for_actors"
-                    app:layout_constraintEnd_toEndOf="@+id/movie_details_guideline_right"
                     app:layout_constraintStart_toStartOf="@+id/movie_details_guideline_left"
-                    app:layout_constraintTop_toBottomOf="@+id/movie_details_title_for_actors">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/movie_details_jason_statham_photo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/jason_statham_name"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/jason_statham" />
-
-                        <TextView
-                            android:id="@+id/movie_details_jason_statham_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_top_for_actor_name"
-                            android:text="@string/jason_statham_name"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_for_actor_name"
-                            android:typeface="normal"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/movie_details_jason_statham_photo" />
-
-                        <ImageView
-                            android:id="@+id/movie_details_holt_mccallany_photo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/horizontal_space_between_actors"
-                            android:contentDescription="@string/holt_mccallany_name"
-                            app:layout_constraintStart_toEndOf="@+id/movie_details_jason_statham_photo"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/holt_mccallany" />
-
-                        <TextView
-                            android:id="@+id/movie_details_holt_mccallany_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/horizontal_space_between_actors"
-                            android:layout_marginTop="@dimen/margin_top_for_actor_name"
-                            android:text="@string/holt_mccallany_name"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_for_actor_name"
-                            android:typeface="normal"
-                            app:layout_constraintStart_toEndOf="@+id/movie_details_jason_statham_photo"
-                            app:layout_constraintTop_toBottomOf="@+id/movie_details_holt_mccallany_photo" />
-
-                        <ImageView
-                            android:id="@+id/movie_details_josh_harnett_photo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/horizontal_space_between_actors"
-                            android:contentDescription="@string/josh_harnett_name"
-                            app:layout_constraintStart_toEndOf="@+id/movie_details_holt_mccallany_photo"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/josh_harnett" />
-
-                        <TextView
-                            android:id="@+id/movie_details_josh_harnett_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/horizontal_space_between_actors"
-                            android:layout_marginTop="@dimen/margin_top_for_actor_name"
-                            android:text="@string/josh_harnett_name"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_for_actor_name"
-                            android:typeface="normal"
-                            app:layout_constraintStart_toEndOf="@+id/movie_details_holt_mccallany_photo"
-                            app:layout_constraintTop_toBottomOf="@+id/movie_details_josh_harnett_photo" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </HorizontalScrollView>
+                    app:layout_constraintEnd_toStartOf="@+id/movie_details_guideline_right"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_details_title_for_actors" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

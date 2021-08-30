@@ -58,6 +58,10 @@ dependencies {
     implementation 'androidx.security:security-crypto:1.1.0-alpha03'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'androidx.work:work-runtime-ktx:2.5.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.9.0"
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.3.5'
     kapt  'androidx.room:room-compiler:2.3.0'
     kapt 'androidx.lifecycle:lifecycle-compiler:2.3.1'
     testImplementation 'junit:junit:4.+'
