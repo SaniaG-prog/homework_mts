@@ -1,10 +1,8 @@
 package com.mtsteta.homework1.database.entities
 
-import androidx.room.*
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "actors")
-data class Actor(
+data class PersonFromCrew(
     @SerializedName("adult")
     val adult: Boolean,
 
@@ -12,8 +10,7 @@ data class Actor(
     val gender: Int,
 
     @SerializedName("id")
-    @PrimaryKey
-    val id: Long,
+    val id: Int,
 
     @SerializedName("known_for_department")
     val knownForDepartment: String,
@@ -30,15 +27,12 @@ data class Actor(
     @SerializedName("profile_path")
     val profilePath: String,
 
-    @SerializedName("cast_id")
-    val castId: Int,
-
-    @SerializedName("character")
-    val character: String,
-
     @SerializedName("credit_id")
     val creditId: String,
 
-    @SerializedName("order")
-    val order: Int,
+    @SerializedName("department")
+    val department: String,
+
+    @SerializedName("job")
+    val job: String
 )

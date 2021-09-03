@@ -1,21 +1,16 @@
 package com.mtsteta.homework1
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mtsteta.homework1.dataSourceImpls.GenresDataSourceImpl
+import com.mtsteta.homework1.database.entities.Actor
+import com.mtsteta.homework1.database.entities.Genre
 import com.mtsteta.homework1.database.entities.Movie
-import com.mtsteta.homework1.dto.GenreDto
-import com.mtsteta.homework1.models.GenresModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MyViewModel: ViewModel() {
-    private val genresModel = GenresModel(GenresDataSourceImpl())
 
     private val prefs: SharedPreferences by lazy {
         App.prefs!!
@@ -24,8 +19,14 @@ class MyViewModel: ViewModel() {
     val moviesDataList: LiveData<List<Movie>> get() = _moviesDataList
     private val _moviesDataList = MutableLiveData<List<Movie>>()
 
-    val genresDataList: LiveData<List<GenreDto>> get() = _genresDataList
-    private val _genresDataList = MutableLiveData<List<GenreDto>>()
+    val genresDataList: LiveData<List<Genre>> get() = _genresDataList
+    private val _genresDataList = MutableLiveData<List<Genre>>()
+
+    val favouriteGenresDataList: LiveData<List<Genre>> get() = _favouriteGenresDataList
+    private val _favouriteGenresDataList = MutableLiveData<List<Genre>>()
+
+    val actorsDataList: LiveData<List<Actor>> get() = _actorsDataList
+    private val _actorsDataList = MutableLiveData<List<Actor>>()
 
     fun addPairToPrefs(key: String, value: String) {
         prefs.edit().putString(key, value).apply()
@@ -35,20 +36,8 @@ class MyViewModel: ViewModel() {
         return prefs.getString(key, "")!!
     }
 
-    fun initDatabase() {
-        if (App.database?.movieDao()?.getAll()?.size == 0) {
-            viewModelScope.launch {
-                val popularMovies: List<Movie> = withContext(Dispatchers.IO) {
-                    App.instance.apiService.getPopularMovies().results
-                }
-                App.database?.movieDao()?.insertAll(popularMovies)
-            }
-        }
-    }
-
     fun loadMovies() {
         _moviesDataList.postValue(App.database?.movieDao()?.getAll())
-        Log.d("Loading movies", App.database?.movieDao()?.getAll().toString())
     }
 
     fun updateMovies() {
@@ -56,7 +45,21 @@ class MyViewModel: ViewModel() {
     }
 
     fun loadGenres() {
-        _genresDataList.postValue(genresModel.getGenres())
+        _genresDataList.postValue(App.database?.genreDao()?.getAll())
+    }
+
+    fun loadFavouriteGenres() {
+        _favouriteGenresDataList.postValue(App.database?.genreDao()?.getByInterest(true))
+    }
+
+    fun loadActors(movieId: Long) {
+        viewModelScope.launch {
+            _actorsDataList.postValue(App.instance.apiService.getActors(movieId).cast)
+        }
+    }
+
+    fun updateGenreInDb(genre: Genre) {
+        App.database?.genreDao()?.insert(genre)
     }
 
     fun loadData() {
